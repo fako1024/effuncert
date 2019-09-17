@@ -4,6 +4,9 @@ This package performs a numeric estimation of quantiles and uncertainties for a 
 [ ![Build Status](https://app.codeship.com/projects/383ecb70-56dd-0137-2fd5-1a9663bf0318/status?branch=master)](https://app.codeship.com/projects/341565) <sup>(master)</sup>  
 [ ![Build Status](https://app.codeship.com/projects/383ecb70-56dd-0137-2fd5-1a9663bf0318/status?branch=develop)](https://app.codeship.com/projects/341565) <sup>(develop)</sup>
 
+Different Frequentist (e.g. Likelihood methods) and non-Frequentist approachs can be used to determine the uncertainties for the Trigger efficiency. In this case, a Bayesian approach was chosen to account for the asymmetry introduced by the Binomial distributed variables and to solve the problematic of boundary effects as well.
+The underlying Binomial probability distribution function and quantiles are modeled using an incomplete, regularized Beta function (the corresponding integral / cumulative PDF) and applying a numeric root finding method to determine arbitrary quantiles.
+
 ## Features
 - Estimation of classical mode and variance of Bernoulli experiment / efficiency calculation
 - Extraction / estimation of quantiles for the underlying probability distribution function
