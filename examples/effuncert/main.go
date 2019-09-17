@@ -6,11 +6,10 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/fako1024/effuncert/pkg/estimator"
+	"github.com/fako1024/effuncert"
 )
 
 var (
-	precision  int
 	confidence float64
 )
 
@@ -20,8 +19,7 @@ func main() {
 	l := log.New(os.Stdout, "", 0)
 
 	// Parse flags
-	flag.IntVar(&precision, "precision", 10000, "Estimation precision (i.e. number of bins for PDF)")
-	flag.Float64Var(&confidence, "confidence", estimator.OneSigma, "Estimation confidence (standard deviation equivalent interval)")
+	flag.Float64Var(&confidence, "confidence", effuncert.OneSigma, "Estimation confidence (standard deviation equivalent interval)")
 	flag.Parse()
 
 	args := flag.Args()
@@ -38,9 +36,8 @@ func main() {
 		l.Fatalf("Invalid number of trials provided (integer required)")
 	}
 
-	e := estimator.New(nSuccess, nTrial,
-		estimator.WithPrecision(precision),
-		estimator.WithConfidence(confidence),
+	e := effuncert.New(nSuccess, nTrial,
+		effuncert.WithConfidence(confidence),
 	)
 
 	l.Printf("%s", e)

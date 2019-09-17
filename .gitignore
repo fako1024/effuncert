@@ -1,2 +1,2 @@
 *.test
-cmd/effuncert/effuncert
+examples/effuncert/effuncert
