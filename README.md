@@ -1,6 +1,9 @@
 # Numeric estimation of statistical uncertainties for Bernoulli experiments
 This package performs a numeric estimation of quantiles and uncertainties for a Bernoulli experiment or and estimator for an efficiency (k/n successful coin flip trials) in pure Go.
 
+[![Github Release](https://img.shields.io/github/release/fako1024/effuncert.svg)](https://github.com/fako1024/effuncert/releases)
+[![GoDoc](https://godoc.org/github.com/fako1024/effuncert?status.svg)](https://godoc.org/github.com/fako1024/effuncert/)
+[![Go Report Card](https://goreportcard.com/badge/github.com/fako1024/effuncert)](https://goreportcard.com/report/github.com/fako1024/effuncert)
 ![Build/Test Status](https://github.com/fako1024/effuncert/workflows/Go/badge.svg)
 
 Different Frequentist (e.g. Likelihood methods) and non-Frequentist approachs can be used to determine the uncertainties for the Trigger efficiency. In this case, a Bayesian approach was chosen to account for the asymmetry introduced by the Binomial distributed variables and to solve the problematic of boundary effects as well.
