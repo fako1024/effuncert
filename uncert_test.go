@@ -62,8 +62,8 @@ func TestStringerInterface(t *testing.T) {
 	estimator := New(1, 2)
 	expectedString := "(0.50000 -0.24787 +0.24787)"
 
-	if fmt.Sprintf("%s", estimator) != expectedString {
-		t.Fatalf("Unexpected formatted string, want \"%s\", have \"%s\"", expectedString, fmt.Sprintf("%s", estimator))
+	if estimator.String() != expectedString {
+		t.Fatalf("Unexpected formatted string, want \"%s\", have \"%s\"", expectedString, estimator)
 	}
 }
 
@@ -115,11 +115,10 @@ func TestSymmetry(t *testing.T) {
 	}
 }
 
-func TestLoop(t *testing.T) {
+func TestLoopFine(t *testing.T) {
 
-	maxTrialsFine, maxTrialsCoarse := uint64(250), uint64(100000)
-
-	for nTrial := uint64(1); nTrial < maxTrialsFine; nTrial++ {
+	maxTrials := uint64(250)
+	for nTrial := uint64(1); nTrial < maxTrials; nTrial++ {
 		for nSuccess := uint64(0); nSuccess < nTrial; nSuccess++ {
 
 			estimator := New(nSuccess, nTrial)
@@ -134,8 +133,12 @@ func TestLoop(t *testing.T) {
 			}
 		}
 	}
+}
 
-	for nTrial := uint64(1); nTrial < maxTrialsCoarse; nTrial += 11111 {
+func TestLoopCoarse(t *testing.T) {
+
+	maxTrials := uint64(100000)
+	for nTrial := uint64(1); nTrial < maxTrials; nTrial += 11111 {
 		for nSuccess := uint64(0); nSuccess < nTrial; nSuccess += 1111 {
 
 			estimator := New(nSuccess, nTrial)
